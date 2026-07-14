@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="420" viewBox="0 0 760 420" font-family="Menlo, Consolas, monospace" font-size="14">
+  <rect width="760" height="420" rx="10" fill="#101418"/>
+  <circle cx="24" cy="22" r="6" fill="#ff5f56"/>
+  <circle cx="44" cy="22" r="6" fill="#ffbd2e"/>
+  <circle cx="64" cy="22" r="6" fill="#27c93f"/>
+  <text x="380" y="27" fill="#8b949e" text-anchor="middle" font-size="12">certclerk — short-lived SSH certs, policy, revocation, audit</text>
+  <g fill="#c9d1d9">
+    <text x="24" y="62"><tspan fill="#7ee787">$</tspan> certclerk issue --user alice --key alice.pub --ttl 30m</text>
+    <text x="24" y="86">issued serial 1 to alice: principals <tspan fill="#79c0ff">alice,deploy</tspan>, valid <tspan fill="#79c0ff">30m</tspan> (until 2026-07-13T06:22:01Z)</text>
+    <text x="24" y="108">wrote <tspan fill="#79c0ff">alice-cert.pub</tspan></text>
+    <text x="24" y="146"><tspan fill="#7ee787">$</tspan> certclerk issue --user alice --key alice.pub --principals root</text>
+    <text x="24" y="170">certclerk: <tspan fill="#f85149">policy: denied</tspan> for "alice": principal "root" is not allowed</text>
+    <text x="24" y="208"><tspan fill="#7ee787">$</tspan> certclerk revoke --serial 1 --reason "laptop stolen"</text>
+    <text x="24" y="232">revoked serial 1</text>
+    <text x="24" y="254"><tspan fill="#7ee787">$</tspan> certclerk verify alice-cert.pub</text>
+    <text x="24" y="278">certclerk: verify alice-cert.pub: ca: <tspan fill="#f85149">certificate revoked</tspan> (serial 1 at 2026-07-13T05:52:01Z)</text>
+    <text x="24" y="316"><tspan fill="#7ee787">$</tspan> certclerk audit --verify</text>
+    <text x="24" y="340"><tspan fill="#7ee787">audit ok</tspan>: 3 entries, chain intact</text>
+    <text x="24" y="374"><tspan fill="#7ee787">$</tspan> certclerk krl --out revoked.krl</text>
+    <text x="24" y="398">wrote <tspan fill="#79c0ff">revoked.krl</tspan> (1 revocation, 146 bytes) <tspan fill="#8b949e"># sshd RevokedKeys format</tspan></text>
+  </g>
+</svg>

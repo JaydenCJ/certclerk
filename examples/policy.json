@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "defaults": {
+    "max_ttl": "8h",
+    "extensions": ["permit-pty"]
+  },
+  "users": {
+    "alice": {
+      "principals": ["alice", "deploy"],
+      "max_ttl": "1h"
+    },
+    "ci-bot": {
+      "principals": ["deploy"],
+      "max_ttl": "15m",
+      "extensions": [],
+      "source_address": ["10.0.0.0/8"],
+      "force_command": "/usr/local/bin/deploy"
+    },
+    "oncall": {
+      "principals": ["*"],
+      "max_ttl": "30m"
+    }
+  }
+}

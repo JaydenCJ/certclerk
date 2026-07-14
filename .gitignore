@@ -1,0 +1,18 @@
+# build artifacts
+/certclerk
+/dist/
+
+# test and coverage output
+*.test
+*.out
+coverage.*
+
+# local CA state from experiments (never commit a real ca.key)
+/.certclerk/
+*.krl
+
+# editor noise
+.idea/
+.vscode/
+*.swp
+.DS_Store
